@@ -61,14 +61,12 @@ sistema-iluminacao-publica-inteligente/
 ├── README.md
 ├── codigo/
 │   └── iluminacao_publica_iot.ino
-├── imagens/
-│   ├── montagem-circuito.jpg
-│   ├── estado-repouso.jpg
-│   └── presenca-detectada.jpg
 ├── diagramas/
-│   ├── arquitetura-iot.png
-│   ├── fluxograma-funcionamento.png
-│   └── esquema-ligacoes.png
+│   ├── arquitetura-iot.md
+│   ├── esquema-ligacoes.md
+│   └── fluxograma-funcionamento.md
+├── imagens/
+│   └── README.md
 └── resultados/
     └── evidencias-testes.md
 ```
