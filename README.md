@@ -1,10 +1,8 @@
 # Sistema de Iluminação Pública Inteligente baseado em IoT
 
-## Descrição do Projeto
+Este repositório apresenta o desenvolvimento de um protótipo de Sistema de Iluminação Pública Inteligente baseado em Internet das Coisas, utilizando Arduino UNO R3, sensor de presença PIR HC-SR501, LEDs e buzzer.
 
-Este repositório apresenta o desenvolvimento de um protótipo de Sistema de Iluminação Pública Inteligente baseado em Internet das Coisas, utilizando Arduino UNO R3, sensor de presença PIR, LEDs e buzzer.
-
-O objetivo do projeto é simular uma solução de iluminação pública capaz de identificar presença ou movimento em determinado ambiente e acionar sinais luminosos e sonoros. A proposta está alinhada ao ODS 11, que trata de cidades e comunidades sustentáveis.
+A proposta simula uma solução capaz de identificar presença ou movimento em determinado ambiente e acionar sinais luminosos e sonoros automaticamente. O projeto está alinhado ao ODS 11, que trata de cidades e comunidades sustentáveis.
 
 ## Objetivo Geral
 
@@ -15,8 +13,7 @@ Desenvolver um protótipo funcional de iluminação pública inteligente com sen
 - Utilizar sensor PIR para identificar presença ou movimento.
 - Acionar LED verde no estado de repouso.
 - Acionar LED vermelho e buzzer quando houver presença detectada.
-- Simular o funcionamento de um sistema inteligente aplicado à iluminação pública.
-- Documentar o projeto com código, imagens, prints e diagramas.
+- Documentar o projeto com código, imagens, prints, diagramas e evidências.
 - Prever futura integração com comunicação MQTT para aplicações IoT.
 
 ## Componentes Utilizados
@@ -66,39 +63,18 @@ sistema-iluminacao-publica-inteligente/
 │   ├── esquema-ligacoes.md
 │   └── fluxograma-funcionamento.md
 ├── imagens/
-│   └── README.md
+│   ├── README.md
+│   ├── montagem-circuito.png
+│   ├── estado-repouso.png
+│   ├── presenca-detectada.png
+│   ├── arduino-uno-r3-closeup.png
+│   ├── sensor-pir-closeup.png
+│   ├── buzzer-ativo-5v.png
+│   ├── github-repositorio.png
+│   ├── print-arduino-ide-01.png
+│   ├── print-arduino-ide-02.png
+│   ├── print-monitor-serial-01-inicializacao.png
+│   ├── print-monitor-serial-02-repouso.png
+│   └── print-monitor-serial-03-presenca-detectada.png
 └── resultados/
     └── evidencias-testes.md
-```
-
-## Etapas do Projeto
-
-| Etapa | Descrição | Status |
-|---|---|---|
-| Levantamento dos componentes | Definição dos materiais utilizados | Concluído |
-| Montagem do circuito | Conexão do Arduino, PIR, LEDs e buzzer | Concluído |
-| Programação do Arduino | Desenvolvimento do código de funcionamento | Concluído |
-| Teste local | Validação dos estados de repouso e presença | Concluído |
-| Documentação no GitHub | Organização do repositório com código e evidências | Em andamento |
-| Integração MQTT | Comunicação com plataforma IoT | Previsto |
-
-## Evidências do Projeto
-
-As evidências do projeto serão adicionadas nas pastas de imagens, diagramas e resultados, incluindo:
-
-- Print do código na Arduino IDE.
-- Print do Monitor Serial.
-- Foto da montagem física.
-- Foto do LED verde ligado em repouso.
-- Foto do LED vermelho e buzzer acionados.
-- Diagrama da arquitetura do sistema.
-- Fluxograma de funcionamento.
-- Esquema de ligação dos componentes.
-
-## Situação Atual
-
-O protótipo local com Arduino, sensor PIR, LEDs e buzzer foi desenvolvido e testado. A documentação do projeto está sendo organizada neste repositório para apresentação acadêmica.
-
-## Autor
-
-Leonardo Silva Silveira
