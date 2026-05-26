@@ -1,6 +1,6 @@
 # Evidências dos Testes do Protótipo
 
-Este documento reúne as evidências previstas para comprovar o funcionamento do protótipo de Sistema de Iluminação Pública Inteligente baseado em IoT.
+Este documento reúne as evidências utilizadas para comprovar o funcionamento do protótipo de Sistema de Iluminação Pública Inteligente baseado em IoT.
 
 ## Objetivo dos Testes
 
@@ -20,32 +20,45 @@ Validar o comportamento do sistema em dois estados principais:
 | Buzzer | Pino A0 |
 | Ambiente de programação | Arduino IDE |
 | Comunicação local | Monitor Serial |
+| Porta utilizada | COM5 |
+| Velocidade Serial | 9600 baud |
 
 ## Cenários de Teste
 
-| Cenário | Condição | Resultado Esperado | Status |
-|---|---|---|---|
-| Sistema em repouso | Nenhum movimento detectado | LED verde ligado, LED vermelho desligado e buzzer desligado | Concluído |
-| Presença detectada | Movimento identificado pelo sensor PIR | LED verde desligado, LED vermelho ligado e buzzer acionado | Concluído |
-| Retorno ao repouso | Após aproximadamente 10 segundos | LED vermelho e buzzer desligados, LED verde ligado novamente | Concluído |
+| Cenário | Condição | Resultado Esperado | Evidência | Status |
+|---|---|---|---|---|
+| Inicialização do sistema | Arduino conectado ao computador | Sistema inicia e estabiliza o sensor PIR | `print-monitor-serial-01-inicializacao.png` | Concluído |
+| Sistema em repouso | Nenhum movimento detectado | LED verde ligado, LED vermelho desligado e buzzer desligado | `estado-repouso.png` e `print-monitor-serial-02-repouso.png` | Concluído |
+| Presença detectada | Movimento identificado pelo sensor PIR | LED verde desligado, LED vermelho ligado e buzzer acionado | `presenca-detectada.png` e `print-monitor-serial-03-presenca-detectada.png` | Concluído |
+| Montagem física | Componentes conectados ao Arduino e protoboard | Circuito montado com sensor PIR, LEDs e buzzer | `montagem-circuito.png` | Concluído |
 
-## Evidências a serem adicionadas
+## Evidências Visuais
 
-As seguintes evidências serão inseridas no repositório:
-
-- Print do código aberto na Arduino IDE.
-- Print do Monitor Serial exibindo os estados do sistema.
-- Foto da montagem física com Arduino, sensor PIR, LEDs e buzzer.
-- Foto do estado de repouso com LED verde ligado.
-- Foto do estado de presença detectada com LED vermelho ligado.
-- Diagrama da arquitetura IoT proposta.
-- Fluxograma de funcionamento.
-- Esquema de ligação dos componentes.
+| Evidência | Arquivo |
+|---|---|
+| Repositório organizado no GitHub | `../imagens/github-repositorio.png` |
+| Código na Arduino IDE - parte 1 | `../imagens/print-arduino-ide-01.png` |
+| Código na Arduino IDE - parte 2 | `../imagens/print-arduino-ide-02.png` |
+| Inicialização no Monitor Serial | `../imagens/print-monitor-serial-01-inicializacao.png` |
+| Estado de repouso no Monitor Serial | `../imagens/print-monitor-serial-02-repouso.png` |
+| Presença detectada no Monitor Serial | `../imagens/print-monitor-serial-03-presenca-detectada.png` |
+| Montagem física do circuito | `../imagens/montagem-circuito.png` |
+| Estado de repouso com LED verde ligado | `../imagens/estado-repouso.png` |
+| Presença detectada com LED vermelho ligado | `../imagens/presenca-detectada.png` |
+| Arduino UNO R3 utilizado | `../imagens/arduino-uno-r3-closeup.png` |
+| Sensor PIR HC-SR501 | `../imagens/sensor-pir-closeup.png` |
+| Buzzer ativo 5V | `../imagens/buzzer-ativo-5v.png` |
 
 ## Observações dos Testes
 
-Durante os testes locais, o sensor PIR foi utilizado para identificar movimento no ambiente. Quando o sensor detectou presença, o sistema acionou o LED vermelho e o buzzer. Após o tempo definido no código, o sistema retornou automaticamente ao estado de repouso com o LED verde ligado.
+Durante os testes locais, o sensor PIR HC-SR501 foi utilizado para identificar movimento no ambiente. Quando o sistema permaneceu sem detecção de movimento, o LED verde ficou ligado, indicando o estado de repouso.
+
+Quando o sensor PIR detectou presença, o sistema desligou o LED verde, acionou o LED vermelho e ativou o buzzer. Após o tempo definido no código, o sistema retornou automaticamente ao estado de repouso.
+
+## Resultado Obtido
+
+O protótipo apresentou o comportamento esperado nos testes realizados. As evidências registradas por meio de fotos e prints demonstram a montagem física, o funcionamento do código, a comunicação pelo Monitor Serial e a organização do projeto no GitHub.
 
 ## Conclusão Parcial
 
-Os testes locais indicam que o protótipo atende ao comportamento esperado para a etapa inicial do projeto. A comunicação MQTT permanece como proposta de evolução para integração com uma plataforma IoT.
+Os testes locais indicam que o protótipo atende aos objetivos da etapa inicial do projeto. A comunicação MQTT permanece como proposta de evolução para uma etapa futura de integração com plataforma IoT.
