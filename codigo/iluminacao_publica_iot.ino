@@ -1,9 +1,6 @@
-// Projeto: Sistema de Iluminacao Publica Inteligente baseado em IoT
-// Etapa 1: Teste local com Arduino, PIR, LEDs e buzzer
-// Autor: Leonardo Silva Silveira
-//
-// Ligacoes:
-// Sensor PIR no D2
+// Projeto: Iluminacao Publica Inteligente
+// Etapa: Arduino + PIR + LEDs + buzzer + comandos seriais para Node-RED
+// PIR no D2
 // LED verde no D12
 // LED vermelho no D11
 // Buzzer no A0
@@ -13,6 +10,12 @@ const int ledVerde = 12;
 const int ledVermelho = 11;
 const int buzzer = A0;
 
+const unsigned long tempoAlerta = 10000; // 10 segundos
+
+bool emAlerta = false;
+bool aguardandoPIRBaixar = false;
+unsigned long inicioAlerta = 0;
+
 void setup() {
   pinMode(pinoPIR, INPUT);
   pinMode(ledVerde, OUTPUT);
@@ -21,37 +24,90 @@ void setup() {
 
   Serial.begin(9600);
 
-  digitalWrite(ledVerde, HIGH);
+  digitalWrite(ledVerde, LOW);
   digitalWrite(ledVermelho, LOW);
   digitalWrite(buzzer, LOW);
 
-  Serial.println("Sistema de Iluminacao Publica Inteligente iniciado.");
-  Serial.println("Aguardando leitura do sensor PIR...");
+  Serial.println("Sistema iniciando...");
+  Serial.println("Aguardando estabilizacao do sensor PIR por 60 segundos.");
+
+  delay(60000);
+
+  Serial.println("Sistema pronto.");
+  Serial.println("Estado inicial: REPOUSO");
+
+  digitalWrite(ledVerde, HIGH);
+  digitalWrite(ledVermelho, LOW);
+  digitalWrite(buzzer, LOW);
 }
 
 void loop() {
-  int movimento = digitalRead(pinoPIR);
+  verificarComandosSeriais();
 
-  if (movimento == HIGH) {
-    Serial.println("Presenca detectada.");
+  int leituraPIR = digitalRead(pinoPIR);
+
+  if (leituraPIR == LOW) {
+    aguardandoPIRBaixar = false;
+  }
+
+  if (leituraPIR == HIGH && emAlerta == false && aguardandoPIRBaixar == false) {
+    emAlerta = true;
+    aguardandoPIRBaixar = true;
+    inicioAlerta = millis();
 
     digitalWrite(ledVerde, LOW);
     digitalWrite(ledVermelho, HIGH);
     digitalWrite(buzzer, HIGH);
 
-    delay(10000);
+    Serial.println("PRESENCA_DETECTADA");
+  }
 
-    digitalWrite(ledVermelho, LOW);
-    digitalWrite(buzzer, LOW);
-    digitalWrite(ledVerde, HIGH);
+  if (emAlerta == true && millis() - inicioAlerta >= tempoAlerta) {
+    emAlerta = false;
 
-    Serial.println("Sistema retornou ao estado de repouso.");
-  } else {
     digitalWrite(ledVerde, HIGH);
     digitalWrite(ledVermelho, LOW);
     digitalWrite(buzzer, LOW);
 
-    Serial.println("Estado de repouso.");
-    delay(1000);
+    Serial.println("REPOUSO");
+  }
+
+  delay(100);
+}
+
+void verificarComandosSeriais() {
+  if (Serial.available() > 0) {
+    String comando = Serial.readStringUntil('\n');
+    comando.trim();
+
+    if (comando == "LED_VERDE_ON") {
+      digitalWrite(ledVerde, HIGH);
+      Serial.println("ACK_LED_VERDE_ON");
+    }
+
+    else if (comando == "LED_VERDE_OFF") {
+      digitalWrite(ledVerde, LOW);
+      Serial.println("ACK_LED_VERDE_OFF");
+    }
+
+    else if (comando == "LED_VERMELHO_ON") {
+      digitalWrite(ledVermelho, HIGH);
+      Serial.println("ACK_LED_VERMELHO_ON");
+    }
+
+    else if (comando == "LED_VERMELHO_OFF") {
+      digitalWrite(ledVermelho, LOW);
+      Serial.println("ACK_LED_VERMELHO_OFF");
+    }
+
+    else if (comando == "BUZZER_ON") {
+      digitalWrite(buzzer, HIGH);
+      Serial.println("ACK_BUZZER_ON");
+    }
+
+    else if (comando == "BUZZER_OFF") {
+      digitalWrite(buzzer, LOW);
+      Serial.println("ACK_BUZZER_OFF");
+    }
   }
 }
