@@ -41,9 +41,11 @@ Validar o comportamento do sistema nos principais estados de funcionamento:
 | Presença detectada | Movimento identificado pelo sensor PIR | LED verde desligado, LED vermelho ligado e buzzer acionado | `../imagens/presenca-detectada.png` e `../imagens/print-monitor-serial-03-presenca-detectada.png` | Concluído |
 | Montagem física | Componentes conectados ao Arduino e à protoboard | Circuito montado com sensor PIR, LEDs, resistores e buzzer | `../imagens/montagem-circuito.png` | Concluído |
 | Código na Arduino IDE | Código carregado no Arduino | Código compilado e utilizado no protótipo | `../imagens/print-arduino-ide-01.png` e `../imagens/print-arduino-ide-02.png` | Concluído |
-| Comunicação USB/Serial | Arduino conectado ao computador | Mensagens enviadas pelo Arduino ao Node-RED | Monitor Serial e painel de debug do Node-RED | Concluído |
-| Integração MQTT | Node-RED conectado ao broker MQTT | Estados do sistema publicados e monitorados em dashboard | Dashboard do Node-RED | Concluído |
-| Teste dos atuadores | Comandos enviados pelo Node-RED | LED verde, LED vermelho e buzzer acionados individualmente | Dashboard e mensagens ACK | Concluído |
+| Comunicação USB/Serial | Arduino conectado ao computador | Mensagens enviadas pelo Arduino ao Node-RED | `../imagens/print-node-red-fluxo-debug.png` | Concluído |
+| Integração MQTT | Node-RED conectado ao broker MQTT | Estados do sistema publicados e monitorados em dashboard | `../imagens/print-dashboard-node-red.png` | Concluído |
+| Teste do LED verde | Comando enviado pelo Node-RED | LED verde acionado individualmente | `../imagens/print-dashboard-led-verde.png` | Concluído |
+| Teste do LED vermelho | Comando enviado pelo Node-RED | LED vermelho acionado individualmente | `../imagens/print-dashboard-led-vermelho.png` | Concluído |
+| Teste do buzzer | Comando enviado pelo Node-RED | Buzzer acionado individualmente | `../imagens/print-dashboard-buzzer.png` | Concluído |
 
 ## Evidências Visuais
 
@@ -61,6 +63,11 @@ Validar o comportamento do sistema nos principais estados de funcionamento:
 | Arduino UNO R3 utilizado | `../imagens/arduino-uno-r3-closeup.png` |
 | Sensor PIR HC-SR501 utilizado | `../imagens/sensor-pir-closeup.png` |
 | Buzzer ativo 5 V utilizado | `../imagens/buzzer-ativo-5v.png` |
+| Dashboard geral do Node-RED | `../imagens/print-dashboard-node-red.png` |
+| Teste do LED verde no dashboard | `../imagens/print-dashboard-led-verde.png` |
+| Teste do LED vermelho no dashboard | `../imagens/print-dashboard-led-vermelho.png` |
+| Teste do buzzer no dashboard | `../imagens/print-dashboard-buzzer.png` |
+| Fluxo e debug do Node-RED | `../imagens/print-node-red-fluxo-debug.png` |
 
 ## Mensagens Seriais Registradas
 
@@ -100,10 +107,16 @@ Quando o sensor PIR detectou presença, o sistema desligou o LED verde, acionou 
 
 A comunicação USB/Serial permitiu o envio das mensagens do Arduino ao computador. O Node-RED recebeu essas mensagens, processou os dados, publicou informações em tópicos MQTT e apresentou os estados do sistema no dashboard.
 
+Os testes individuais dos atuadores também foram realizados pelo dashboard do Node-RED, permitindo verificar o acionamento do LED verde, do LED vermelho e do buzzer por meio de comandos seriais e mensagens de confirmação ACK.
+
 ## Resultado Obtido
 
 O protótipo apresentou o comportamento esperado nos testes realizados. As evidências registradas por meio de fotos, prints, Monitor Serial, Node-RED, MQTT e dashboard demonstram a montagem física, o funcionamento do código, a comunicação USB/Serial e a integração com a camada IoT.
 
+As medições realizadas indicaram tempos de resposta compatíveis com o funcionamento esperado do protótipo em escala reduzida, validando tanto a detecção de presença quanto o acionamento dos atuadores e a comunicação com o ambiente de monitoramento.
+
 ## Conclusão Parcial
 
 Os testes indicam que o protótipo atende aos objetivos definidos para a etapa acadêmica do projeto. O sistema foi capaz de detectar presença, acionar atuadores luminosos e sonoros, retornar ao estado de repouso e comunicar os estados do protótipo por meio de USB/Serial, Node-RED, broker MQTT e dashboard.
+
+Dessa forma, as evidências registradas neste repositório comprovam o funcionamento físico e lógico do protótipo, bem como sua integração com recursos de Internet das Coisas aplicados ao contexto de iluminação pública inteligente.
