@@ -4,6 +4,12 @@ Este repositório apresenta o desenvolvimento de um protótipo de Sistema de Ilu
 
 A proposta simula uma solução capaz de identificar presença ou movimento em determinado ambiente e acionar sinais luminosos e sonoros automaticamente. O projeto está alinhado ao ODS 11, que trata de cidades e comunidades sustentáveis.
 
+## Vídeo demonstrativo
+
+A apresentação do projeto pode ser acessada pelo link abaixo:
+
+https://www.youtube.com/watch?v=jO-FvlTTFa4
+
 ## Objetivo Geral
 
 Desenvolver um protótipo funcional de iluminação pública inteligente com sensor de presença, capaz de alternar estados de funcionamento conforme a detecção de movimento.
